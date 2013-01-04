@@ -57,7 +57,8 @@ class Lead < ActiveRecord::Base
   has_one     :business_address, :dependent => :destroy, :as => :addressable, :class_name => "Address", :conditions => "address_type='Business'"
   has_many    :addresses, :dependent => :destroy, :as => :addressable, :class_name => "Address" # advanced search uses this
   has_many    :emails, :as => :mediator
-
+  has_many    :attachments, :as => :asset, :dependent => :destroy
+  
   serialize :subscribed_users, Set
 
   accepts_nested_attributes_for :business_address, :allow_destroy => true

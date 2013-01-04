@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :emails
   resources :passwords
 
+  resources :attachments
+  
   resources :accounts, :id => /\d+/ do
     collection do
       get  :advanced_search

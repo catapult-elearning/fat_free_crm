@@ -15,6 +15,8 @@
 
     = render :partial => "tasks/tasks", :locals => {:object => @lead}
 
+    = render :partial => "attachments/attachments", :locals => {:object => @lead}
+
     = render :partial => "versions/versions", :locals => {:object => @lead}
 
     = load_select_popups_for(@lead, :tasks)

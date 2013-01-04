@@ -35,6 +35,7 @@ class OpportunitiesController < EntitiesController
   #----------------------------------------------------------------------------
   def show
     @comment = Comment.new
+    @attachment = Attachment.new
     @timeline = timeline(@opportunity)
     respond_with(@opportunity)
   end

@@ -34,6 +34,7 @@ class AccountsController < EntitiesController
   def show
     @stage = Setting.unroll(:opportunity_stage)
     @comment = Comment.new
+    @attachment = Attachment.new
     @timeline = timeline(@account)
     respond_with(@account)
   end

@@ -1,0 +1,31 @@
+- asset ||= instance_variable_get("@" << controller.controller_name.singularize)
+%div#attachments
+  - collapsed = session[:attachments].nil?
+  %br
+  = subtitle(:attachments, collapsed)
+  %div
+    %div{ hidden_if(collapsed) }
+      .list
+        %li.highlight
+          .body
+            %tt
+              %h2= "Attach new file..."
+              = simple_form_for(@attachment, :html => { :multipart => true}) do |f|
+                = f.hidden_field 'asset_id', :value => asset.id
+                = f.hidden_field 'asset_class', :value => asset.class
+                = f.file_field :file
+                = f.submit "Upload"
+                
+        - asset.attachments.each do |attachment|
+          %li.highlight
+            .body
+              %tt 
+                = link_to(attachment.doc_file_name, attachment)  
+                = "added by Admin "
+                %small= t('time_ago', time_ago_in_words(attachment.created_at))
+                
+             
+        
+
+     
+

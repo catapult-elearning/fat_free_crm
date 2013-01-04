@@ -48,7 +48,8 @@ class Campaign < ActiveRecord::Base
   has_many    :leads, :dependent => :destroy, :order => "id DESC"
   has_many    :opportunities, :dependent => :destroy, :order => "id DESC"
   has_many    :emails, :as => :mediator
-
+  has_many    :attachments, :as => :asset, :dependent => :destroy
+  
   serialize :subscribed_users, Set
 
   scope :state, lambda { |filters|

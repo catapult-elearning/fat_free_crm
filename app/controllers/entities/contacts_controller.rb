@@ -34,6 +34,8 @@ class ContactsController < EntitiesController
   def show
     @stage = Setting.unroll(:opportunity_stage)
     @comment = Comment.new
+    @attachment = Attachment.new
+    @attachment = Attachment.new
     @timeline = timeline(@contact)
     respond_with(@contact)
   end

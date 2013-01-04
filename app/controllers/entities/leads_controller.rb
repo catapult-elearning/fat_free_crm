@@ -34,6 +34,7 @@ class LeadsController < EntitiesController
   #----------------------------------------------------------------------------
   def show
     @comment = Comment.new
+    @attachment = Attachment.new
     @timeline = timeline(@lead)
     respond_with(@lead)
   end

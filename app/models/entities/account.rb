@@ -49,7 +49,8 @@ class Account < ActiveRecord::Base
   has_one     :shipping_address, :dependent => :destroy, :as => :addressable, :class_name => "Address", :conditions => "address_type = 'Shipping'"
   has_many    :addresses, :dependent => :destroy, :as => :addressable, :class_name => "Address" # advanced search uses this
   has_many    :emails, :as => :mediator
-
+  has_many    :attachments, :as => :asset, :dependent => :destroy
+  
   serialize :subscribed_users, Set
 
   accepts_nested_attributes_for :billing_address,  :allow_destroy => true, :reject_if => proc {|attributes| Address.reject_address(attributes)}

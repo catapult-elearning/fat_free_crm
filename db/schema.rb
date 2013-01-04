@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121221033947) do
+ActiveRecord::Schema.define(:version => 20130103011927) do
 
   create_table "account_contacts", :force => true do |t|
     t.integer  "account_id"
@@ -32,18 +31,18 @@ ActiveRecord::Schema.define(:version => 20121221033947) do
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
     t.integer  "assigned_to"
-    t.string   "name",             :limit => 64, :default => "",       :null => false
-    t.string   "access",           :limit => 8,  :default => "Public"
+    t.string   "name",             :limit => 100, :default => "",       :null => false
+    t.string   "access",           :limit => 8,   :default => "Public"
     t.string   "website",          :limit => 64
     t.string   "toll_free_phone",  :limit => 32
     t.string   "phone",            :limit => 32
     t.string   "fax",              :limit => 32
     t.datetime "deleted_at"
-    t.datetime "created_at",                                           :null => false
-    t.datetime "updated_at",                                           :null => false
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
     t.string   "email",            :limit => 64
     t.string   "background_info"
-    t.integer  "rating",                         :default => 0,        :null => false
+    t.integer  "rating",                          :default => 0,        :null => false
     t.string   "category",         :limit => 32
     t.text     "subscribed_users"
   end
@@ -82,6 +81,17 @@ ActiveRecord::Schema.define(:version => 20121221033947) do
   end
 
   add_index "addresses", ["addressable_id", "addressable_type"], :name => "index_addresses_on_addressable_id_and_addressable_type"
+
+  create_table "attachments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "asset_id"
+    t.string   "asset_type"
+    t.integer  "doc_file_size"
+    t.string   "doc_file_name"
+    t.string   "doc_content_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "avatars", :force => true do |t|
     t.integer  "user_id"
@@ -251,7 +261,7 @@ ActiveRecord::Schema.define(:version => 20121221033947) do
     t.string   "first_name",       :limit => 64,  :default => "",       :null => false
     t.string   "last_name",        :limit => 64,  :default => "",       :null => false
     t.string   "access",           :limit => 8,   :default => "Public"
-    t.string   "title",            :limit => 64
+    t.string   "title",            :limit => 100, :default => "",       :null => false
     t.string   "company",          :limit => 64
     t.string   "source",           :limit => 32
     t.string   "status",           :limit => 32

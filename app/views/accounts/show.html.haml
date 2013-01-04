@@ -17,6 +17,8 @@
 
     = render :partial => "tasks/tasks", :locals => {:object => @account}
 
+    = render :partial => "attachments/attachments", :locals => {:object => @account}
+ 
     = render "contacts/contacts", :object => @account
 
     = render "opportunities/opportunities", :object => @account
